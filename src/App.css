@@ -111,6 +111,17 @@ li {list-style: none;}
   width: 280px;
   border: 1px solid#eee;
   margin-bottom: 25px;
+  position: relative;
+}
+.best-container .best .tag {
+  position: absolute;
+  width: 52px;
+  top: 10px;
+  left: 10px;
+}
+.best-container .best .tag img {
+  width: 100%;
+  height: 25px;
 }
 .best-container .best img {
   width: 280px;
@@ -123,6 +134,14 @@ li {list-style: none;}
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.best-container .best .text-area span {
+  vertical-align: middle;
+  font-size: 16px;
+  margin-right: 10px;
+}
+.best-container .best .text-area .saleprice {
+  text-decoration: line-through;
 }
 .best-container .best .text-area .best__desc {
   margin-bottom: 8px;
@@ -176,6 +195,17 @@ li {list-style: none;}
   width: 280px;
   border: 1px solid#eee;
   margin-bottom: 25px;
+  position: relative;
+}
+.recommend-container .recommend .tag {
+  position: absolute;
+  width: 52px;
+  top: 10px;
+  left: 10px;
+}
+.recommend-container .recommend .tag img {
+  width: 100%;
+  height: 25px;
 }
 .recommend-container .recommend img {
   width: 280px;
@@ -183,6 +213,14 @@ li {list-style: none;}
 }
 .recommend-container .recommend .text-area {
   padding: 19px 28px;
+}
+.recommend-container .recommend .text-area span {
+  vertical-align: middle;
+  font-size: 16px;
+  margin-right: 10px;
+}
+.recommend-container .recommend .text-area .saleprice {
+  text-decoration: line-through;
 }
 .recommend-container .recommend .text-area p {
   white-space: nowrap;
