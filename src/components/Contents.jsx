@@ -1,5 +1,6 @@
-import React from "react";
-
+import React, { useState } from "react";
+import './Contents.css'
+import styled from "styled-components";
 export default function Contents(){
   
   const bests = [
@@ -71,7 +72,6 @@ export default function Contents(){
       saleprice: '13,000원'
     },
   ]
-
   const recommends = [
     {
       id: 'recommend-01',
@@ -142,6 +142,10 @@ export default function Contents(){
       new: true
     },
   ]
+
+  const [count, setCount] = useState([0,0,0,0,0,0,0,0]);
+  const [count2, setCount2] = useState([0,0,0,0,0,0,0,0]);
+
   const gifts = [
     {
       id: 'gift-01',
@@ -159,6 +163,53 @@ export default function Contents(){
       best: true
     }
   ]
+  const Button = styled.button`
+    display: inline-block;
+    width:50%;
+    height: 54px;
+    background-color: #f8f8f8;
+    color: #bbb;
+    outline: none;
+    border: 1px solid #eee;
+  `
+
+  const benefits = [
+    {
+      id: 'benefit-01',
+      image: '/images/DM_20220706163311_074.png',
+      title: '회원가입 시 마일리지 혜택',
+      desc: '신규 회원가입 시 2,000원 마일리지가 지급됩니다.'
+    },
+    {
+      id: 'benefit-02',
+      image: '/images/DM_20220706163311_074.png',
+      title: '3만원 이상 무료배송',
+      desc: '3만원 이상 무제한 무료배송 합니다.'
+    },
+    {
+      id: 'benefit-03',
+      image: '/images/DM_20220706163311_074.png',
+      title: '금액대별 회원 혜택',
+      desc: '구매 금액대별 혜택을 드리는 회원제도'
+    },
+  ]
+  const reservations = [
+    {
+      id: 'reserve-01',
+      image : '/images/store.jpg',
+      tag: 'STORE',
+      title: '가까운 매장 찾기',
+      desc: '우리동네에서 가까운 삼진어묵 매장을 찾아보세요!'
+    },
+    {
+      id: 'reserve-02',
+      image : '/images/reservation.jpg',
+      tag: 'RESERVATION',
+      title: '체험·역사관 예약',
+      desc: '삼진어묵 역사관 방문과 어묵 만들기를 체험해보세요!'
+    },
+  ]
+
 
   return (
     <>
@@ -172,7 +223,7 @@ export default function Contents(){
 
           <div className="best__product">
             {
-              bests.map((best) => {
+              bests.map((best,i) => {
                 return (
                   <div className="best" key={best.id}>
                     <div className="tag">
@@ -188,8 +239,12 @@ export default function Contents(){
                       <span className="best__price">{best.price}</span>
                     </div>
                     <div className="best__btn">
-                      <button>찜하기</button>
-                      <button>장바구니</button>
+                      <Button onClick={()=>{
+                        let countCopy = [...count]
+                        countCopy[i] += 1
+                        setCount(countCopy)
+                      }}>🤍찜하기{count[i]}</Button>
+                      <Button>🛒장바구니</Button>
                     </div>
                   </div>
                 )
@@ -204,7 +259,7 @@ export default function Contents(){
           <h2 className="recommend-container__title">삼진어묵 추천상품</h2>
           <div className="recommend__product">
             {
-              recommends.map((recommend)=>{
+              recommends.map((recommend,i)=>{
                 return (
                   <div className="recommend" key={recommend.id}>
                     <div className="tag">
@@ -220,8 +275,12 @@ export default function Contents(){
                       <span className="recommend__price">{recommend.price}</span>
                     </div>
                     <div className="recommend__btn">
-                      <button>찜하기</button>
-                      <button>장바구니</button>
+                    <Button onClick={()=>{
+                        let countCopy = [...count2]
+                        countCopy[i] += 1
+                        setCount2(countCopy)
+                      }}>🤍찜하기{count2[i]}</Button>
+                      <Button>🛒장바구니</Button>
                     </div>
                   </div>
                 )
@@ -239,6 +298,9 @@ export default function Contents(){
             gifts.map((gift)=>{
               return (
                 <div className='gift' key={gift.id}>
+                  <div className="tag">
+                    {gift.best? <img src="/images/DM_20220706163311_044.png"></img>:null}
+                  </div>
                   <img src={gift.image} alt="gift.image"/>
                   <div className="text-area">
                     <p className="gift__title">{gift.title}</p>
@@ -252,6 +314,44 @@ export default function Contents(){
         </div>
         </div>
       </section>
+
+      <section className="benefit-container">
+        <div className="inner">
+          {
+            benefits.map((benefit) => {
+              return (
+                <div className="benefit" key={benefit.id}>
+                  <img src={benefit.image} alt="benefit-img" />
+                  <div className="title">{benefit.title}</div>
+                  <div className="desc">{benefit.desc}</div>
+                </div>
+              )
+            })
+          }
+        </div>
+      </section>
+
+      <section className="reservation-cotainer">
+        <div className="inner">
+          {
+            reservations.map((reservation)=>{
+              return (
+                <div className="reservation" key={reservation.id}>
+                  <img src={reservation.image} alt="reservation"/>
+                  <div className="text-area">
+                    <div className="tag">{reservation.tag}</div>
+                    <div className="title">{reservation.title}</div>
+                    <div className="desc">{reservation.desc}</div>
+                  </div>
+                </div>
+              )
+            })
+          }
+        </div>
+      </section>
+
+      <h2 className="insta">인스타그램 @samjinamook</h2>
+
     </>
   )
 }
